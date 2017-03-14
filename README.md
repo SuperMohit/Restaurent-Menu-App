@@ -6,3 +6,6 @@
 5. Service can be injected into controllers, directives, factories etc.
 6. Built in services $http, $resource, $location.
 7. Services first register in a module and then  injectible as depndency.
+8. Value is a simple object.
+9. value are registered as value();
+10. 
