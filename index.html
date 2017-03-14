@@ -54,16 +54,19 @@
             <th>Amount</th>
           </tr>
         </thead>
+            <tr ng-repeat="orderitem in orderItems" class="rest-name">
+            <td>     <button type="button" class="btn btn-danger btn-xs" ng-click="cancelOrder($index)">X</button>
+                {{orderitem.name}}</td>
+            <td>{{orderitem.price}}</td>
+            <td>{{orderitem.qty}}</td>
+            <td>{{orderitem.amount}}</td>
+        </tr>
                 <thead class="order-header">
           <tr>
             <th>Total Amount</th>            
           </tr>
         </thead>
-                 <tr ng-repeat="orderitem in orderItems" class="rest-name">
-            <td>{{orderitem.name}}</td>
-            <td>{{orderitem.price}}</td>
-            <td>{{orderitem.quantity}}</td>
-        </tr>
+                
                 </table>
             </div>
         </div>

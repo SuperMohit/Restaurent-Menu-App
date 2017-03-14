@@ -17,7 +17,7 @@ var c = angular.module("CtrlModule", []);
         console.log("Ctrl App run");
     });
 
-    c.controller("MenuController", function($scope){
+    c.controller("MenuController", function($scope,vorders){
         var menuItems = [
             {"code": "VG01", "name": "Sandwich", "price": 120, "description": "Veg Sandwich"},
             {"code": "VG02", "name": "Burger", "price": 60, "description": "Veg burger"},
@@ -26,10 +26,14 @@ var c = angular.module("CtrlModule", []);
 
         $scope.itemsList = menuItems;    
         $scope.placeOrder = function(menuitem){
-            var orderedItem = {"name": menuitem.name, "price": menuitem.price, "qty" :1};
+            var orderedItem = {"name": menuitem.name, "price": menuitem.price, "qty" :1,"amount":menuitem.price};
+            vorders.push(orderedItem);
         }
     });
 
-    c.controller("OrderController", function($scope){    
-       $scope.orderItems = [];
+    c.controller("OrderController", function($scope, vorders){    
+       $scope.orderItems = vorders;        
+        $scope.cancelOrder = function(indx){
+            vorders.splice(indx,1);
+        }
     });
