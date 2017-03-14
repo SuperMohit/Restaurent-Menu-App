@@ -8,4 +8,4 @@
 7. Services first register in a module and then  injectible as depndency.
 8. Value is a simple object.
 9. value are registered as value();
-10. 
+10. 2 way data binding is applied only to HTML forms: ng-model 
