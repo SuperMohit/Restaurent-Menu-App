@@ -9,3 +9,4 @@
 8. Value is a simple object.
 9. value are registered as value();
 10. 2 way data binding is applied only to HTML forms: ng-model 
+11. npm i -g deployd  [g for global]
