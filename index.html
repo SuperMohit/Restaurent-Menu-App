@@ -1,0 +1,72 @@
+<html ng-app="menuApp">
+
+<head>
+<title>My Restaurant</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="js/menuapp.js"></script>
+    <script src="js/appcontroller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.3/angular-sanitize.min.js"></script>
+    </head>
+
+    
+<body class="rest-body" ng-controller="MainController">
+    <div class="jumbotron text-center header">
+    <div class="container">
+        <div class="col-sm-2">
+            <img src="media/logo.jpg" class="img-rounded" alt="Cinque Terre" width="300" height="100">
+        </div>
+        <div class="col-sm-10"><h1 class="rest-name" ng-bind-html="restaurantName"></h1>
+        </div>
+    </div>
+    </div>
+        <div class="container">
+            <div class="col-sm-6" ng-controller="MenuController">
+                <h3>
+                <button type="button" class="btn btn-warning">Menu <span class="badge">{{itemsList.length}}</span></button>
+               </h3>
+                <table class="table menu-table">
+        <thead class="menu-header">
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Place Order</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="menuitem in itemsList" class="rest-name">
+            <td>{{menuitem.name}}</td>
+            <td>{{menuitem.price}}</td>
+            <td><button type="button" class="btn btn-primary btn-sm" ng-click="placeOrder(menuitem)">Add to <span class="glyphicon glyphicon-shopping-cart"></span></button></td>
+        </tr>
+      </table>
+            </div>
+            <div class="col-sm-6"  ng-controller="OrderController">
+               <h3>
+                <button type="button" class="btn btn-danger">Cart <span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">{{orderItems.length}}</span></button>
+               </h3>
+            <table class="table order-table">
+        <thead class="order-header">
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+                <thead class="order-header">
+          <tr>
+            <th>Total Amount</th>            
+          </tr>
+        </thead>
+                 <tr ng-repeat="orderitem in orderItems" class="rest-name">
+            <td>{{orderitem.name}}</td>
+            <td>{{orderitem.price}}</td>
+            <td>{{orderitem.quantity}}</td>
+        </tr>
+                </table>
+            </div>
+        </div>
+
+</body>
+</html>

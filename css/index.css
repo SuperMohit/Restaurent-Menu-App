@@ -1,0 +1,27 @@
+.header{
+    background-color: burlywood;
+}
+
+.rest-name{
+    color: azure !important;
+
+}
+
+.order-table{
+        background-color: darksalmon;
+}
+.menu-table{
+        background-color: burlywood;
+}
+
+.rest-body{
+    background-color: beige;
+}
+
+.menu-header{
+        color: darkgoldenrod;
+}
+
+.order-header{
+        color: azure;
+}
