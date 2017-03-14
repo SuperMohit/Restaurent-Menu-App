@@ -26,7 +26,7 @@ var c = angular.module("CtrlModule", []);
 
         $scope.itemsList = menuItems;    
         $scope.placeOrder = function(menuitem){
-            var orderedItem = {"name": menuitem.name, "price": menuitem.price, "qty" :1,"amount":menuitem.price};
+            var orderedItem = {"name": menuitem.name, "price": menuitem.price, "qty" :1,"amount":menuitem.price, "code": menuitem.code};
             vorders.push(orderedItem);
         }
     });
@@ -35,5 +35,14 @@ var c = angular.module("CtrlModule", []);
        $scope.orderItems = vorders;        
         $scope.cancelOrder = function(indx){
             vorders.splice(indx,1);
+        }
+        
+        $scope.totalAmount = function(){
+            var tot = 0;
+            angular.forEach(vorders,function(item){
+                tot += item.price * item.qty;
+            });
+            
+            return tot;
         }
     });

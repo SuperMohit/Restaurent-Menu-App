@@ -58,12 +58,15 @@
             <td>     <button type="button" class="btn btn-danger btn-xs" ng-click="cancelOrder($index)">X</button>
                 {{orderitem.name}}</td>
             <td>{{orderitem.price}}</td>
-            <td>{{orderitem.qty}}</td>
-            <td>{{orderitem.amount}}</td>
+            <td><input type="number" ng-model="orderitem.qty" min =1 style="width:50px;color:black"></td>
+            <td>{{orderitem.amount * orderitem.qty}}</td>
         </tr>
                 <thead class="order-header">
           <tr>
-            <th>Total Amount</th>            
+            <th>Total Amount</th>     
+             <th></th>     
+              <th></th>     
+             <th>{{totalAmount()}}</th>     
           </tr>
         </thead>
                 
