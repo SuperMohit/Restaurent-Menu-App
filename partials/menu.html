@@ -1,0 +1,54 @@
+      <div class="container">
+            <div class="col-sm-6" ng-controller="MenuController">
+                <h3>
+                <button type="button" class="btn btn-warning">Menu <span class="badge">{{itemsList.length}}</span></button>
+  
+               </h3>
+    
+    <table class="table menu-table">
+        <thead class="menu-header">
+          <tr>
+            <th ><a ng-click="orderModel= 'name'">Name</a></th>
+              <th ><a ng-click="orderModel= 'price'">Price</a></th>
+            <th>Place Order</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="menuitem in itemsList  | orderBy: orderModel" class="rest-name">
+            <td>{{menuitem.name}}</td>
+            <td>{{menuitem.price}}</td>
+            <td><button type="button" class="btn btn-primary btn-sm" ng-click="placeOrder(menuitem)">Add to <span class="glyphicon glyphicon-shopping-cart"></span></button></td>
+        </tr>
+      </table>
+            </div>
+            <div class="col-sm-6"  ng-controller="OrderController">
+               <h3>
+                <button type="button" class="btn btn-danger">Cart <span class="glyphicon glyphicon-shopping-cart"></span> <span class="badge">{{orderItems.length}}</span></button>
+               </h3>
+    <table class="table order-table">
+        <thead class="order-header">
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+            <tr ng-repeat="orderitem in orderItems" class="rest-name">
+            <td>     <button type="button" class="btn btn-danger btn-xs" ng-click="cancelOrder($index)">X</button>
+                {{orderitem.name}}</td>
+            <td>{{orderitem.price}}</td>
+            <td><input type="number" ng-model="orderitem.qty" min =1 style="width:50px;color:black"></td>
+            <td>{{orderitem.amount * orderitem.qty}}</td>
+        </tr>
+                <thead class="order-header">
+          <tr>
+            <th>Total Amount</th>     
+             <th></th>     
+              <th></th>     
+             <th>{{totalAmount()}}</th>     
+          </tr>
+        </thead>
+                
+                </table>
+            </div>
+        </div>

@@ -20,6 +20,8 @@
                 var orderedItem = {"name": menuitem.name, "price": menuitem.price, "qty" :1,"amount":menuitem.price, "code": menuitem.code};
                 OrderServices.addOrderedItem(orderedItem);
             }
+            
+             
         });
 
         c.controller("OrderController", function($scope, OrderServices){        
@@ -29,7 +31,8 @@
             };
 
             $scope.totalAmount = function(){
-                return OrderServices.getTotalAmount();
-               
+                return OrderServices.getTotalAmount();            
             }
+            
+          
         });

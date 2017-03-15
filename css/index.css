@@ -1,5 +1,6 @@
 .header{
-    background-color: burlywood;
+    background-color: darkred;
+    margin-bottom : 0!important;
 }
 
 .rest-name{
@@ -24,4 +25,12 @@
 
 .order-header{
         color: azure;
+}
+
+.home-page{
+   width: 100% !important;
+}
+
+.no-margin{
+ margin-bottom: 0 !important;
 }

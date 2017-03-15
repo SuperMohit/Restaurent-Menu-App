@@ -1,0 +1,23 @@
+    <div class="container">
+            <div class="col-sm-12" ng-controller="MenuController">
+                <h3>
+                 ITEM LIST
+               </h3>
+                <table class="table menu-table">
+        <thead class="menu-header">
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="menuitem in itemsList" class="rest-name">
+            <td>{{menuitem.code}}</td>
+            <td>{{menuitem.name}}</td>
+            <td>{{menuitem.price}}</td>
+            <td>{{menuitem.description | truncate : 6}}</td>
+        </tr>
+      </table>
+            </div>
+</div>
