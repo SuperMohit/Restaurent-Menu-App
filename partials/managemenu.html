@@ -1,8 +1,6 @@
     <div class="container">
             <div class="col-sm-12" ng-controller="MenuController">
-                <h3>
-                 ITEM LIST
-               </h3>
+                <h3></h3>
                 <table class="table menu-table">
         <thead class="menu-header">
           <tr>
@@ -10,6 +8,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tr ng-repeat="menuitem in itemsList" class="rest-name">
@@ -17,7 +16,19 @@
             <td>{{menuitem.name}}</td>
             <td>{{menuitem.price}}</td>
             <td>{{menuitem.description | truncate : 6}}</td>
+            <td> <button class="btn btn-danger btn-sm" ng-click="delete(menuitem.id, $index)">X</button>
+             <button class="btn btn-success btn-sm" ng-click="edit(menuitem)">E</button>
+            </td>
         </tr>
       </table>
+           <h3>Add Item</h3>       
+        <form class="well">
+          <input ng-model = "newmenuitem.code" placeholder="Code">  
+          <input ng-model = "newmenuitem.name" placeholder="Name">  
+         <input ng-model = "newmenuitem.price" placeholder="Price">            
+         <input ng-model = "newmenuitem.description" placeholder="Description">      
+         <button class="btn btn-primary" ng-click="save()">Save</button>   
+        </form>        
+                
             </div>
 </div>

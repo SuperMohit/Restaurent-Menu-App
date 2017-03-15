@@ -4,6 +4,19 @@ s.service("MenuServices", function(MenuFactory){
     this.getAllMenuItems = function(){
         return MenuFactory.getMenuItems();
     }
+    
+    this.addMenuItem = function(newmenuitem){
+        MenuFactory.addMenuItem(newmenuitem);
+    }
+    
+      this.deleteMenuItem = function (mid,idx){
+          MenuFactory.deleteMenuItem(mid,idx);
+     }
+      
+     this.updateMenuItem = function (newmenuitem){
+          MenuFactory.updateMenuItem(newmenuitem);
+     }  
+    
 });
 
 s.service("OrderServices", function(OrderFactory){    
@@ -28,5 +41,6 @@ s.service("OrderServices", function(OrderFactory){
 
           return tot;
      }
-    
+     
+   
 });

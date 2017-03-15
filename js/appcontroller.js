@@ -21,7 +21,20 @@
                 OrderServices.addOrderedItem(orderedItem);
             }
             
+             $scope.save = function(){
+                if($scope.newmenuitem.id == undefined)
+                    MenuServices.addMenuItem($scope.newmenuitem);
+                 else 
+                     MenuServices.updateMenuItem($scope.newmenuitem);
+             }             
              
+             $scope.delete = function(itemId, idx){
+                 MenuServices.deleteMenuItem(itemId, idx);
+             }
+             
+             $scope.edit = function (menuitem){
+                 $scope.newmenuitem = angular.copy(menuitem);
+             }
         });
 
         c.controller("OrderController", function($scope, OrderServices){        

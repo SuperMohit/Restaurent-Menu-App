@@ -1,18 +1,47 @@
-var f = angular.module("FactModule", []);
+var f = angular.module("FactModule", ['ngResource']);
 
 
-f.factory("MenuFactory", function(){
+f.factory("MenuFactory", function($resource){
       
-    var menuItems = [
-            {"code": "VG01", "name": "Sandwich", "price": 120, "description": "Veg Sandwich"},
-            {"code": "VG02", "name": "Burger", "price": 60, "description": "Veg burger"},
-            {"code": "NV01", "name": "Ch Hog Dog", "price": 150, "description": "Non Veg Chicken Hog Dog"},
-            {"code": "NV02", "name": "Mutton tikka", "price": 220, "description": "Mutton tikka"}];
+    var menuItems;
+    
+    var menuResource = $resource("http://localhost:2403/wsmenuitems",{"id" :"@mid"});
     
      return{
          getMenuItems : function (){
+             menuItems = menuResource.query();
              return menuItems;
+         },
+         
+         addMenuItem :  function(newmenuitem){
+             menuResource.save(newmenuitem, function(res){
+                 console.log("Item saved");
+                 menuItems.push(res);                       
+                 }, function(err){
+                    console.log("Error");
+             })
+         },
+         
+         deleteMenuItem : function(mid,idx){
+             menuResource.remove({"id" : mid}, 
+                function(res){
+                 console.log("Success in removing item");
+                 menuItems.splice(idx,1);
+             },  function(err){
+                 console.log("Error in removing item");
+             })
+             
+         },
+           updateMenuItem :  function(newmenuitem){
+             menuResource.save(newmenuitem, function(res){
+                 console.log("update success");
+                                     
+                 }, function(err){
+                    console.log("Error");
+             })
          }
+         
+    
      }
      
 });
