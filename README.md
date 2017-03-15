@@ -1,4 +1,4 @@
-![alt tag](https://github.com/SuperMohit/angularjs/blob/master/media/home.PNG)
+![alt tag](https://github.com/SuperMohit/angularjs/blob/master/media/menu.PNG)
 1. Don't pollute root scope. 
 2. Service objects : Dependency object available as injectible parameter.
 3. Instead polluting root scope create sevice objects and inject it in controller.
