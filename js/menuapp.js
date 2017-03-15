@@ -10,4 +10,4 @@ app.run(function(){
 });
 
 //Register Value object
-app.value("vorders", []);
+//app.value("vorders", []);
