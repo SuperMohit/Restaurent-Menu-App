@@ -12,14 +12,17 @@ m.controller("FirstController", function(){
 
 
 m.controller("DemoController", ["$scope",function(a){
-    //define a counter model
-    
-    
+    //define a counter model    
     a.counter= 0;
     a.incrementCounter = function(){
     a.counter++;
     }
     
-    
+    document.getElementById("mybutton").addEventListener("click",function(){        
+        a.counter++;
+        console.log("counter is", a.counter);     
+      //trigger digest loop
+        a.$apply();
+    })
     
 }]);

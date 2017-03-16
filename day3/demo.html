@@ -1,7 +1,7 @@
 <html ng-app="demoApp">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
-        <script src="js/demoapp.min.js"></script>
+        <script src="js/demoapp.js"></script>
     </head>
     <body>
      {{"Demo App"}}
@@ -11,7 +11,8 @@
         </div>   
         <h3 ng-controller="DemoController">
           Counter is {{counter}}
-          <button ng-click="incrementCounter()">Up!</button>    
+          <button ng-click="incrementCounter()">Up!</button>       
+          <button id="mybutton">Push!</button>    
             
         </h3>
     </body>
