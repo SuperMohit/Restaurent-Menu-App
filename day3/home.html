@@ -1,0 +1,48 @@
+<html ng-app="uiDemoApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="js/angular-ui-router.js"></script>
+        <script>
+        var app = angular.module("uiDemoApp", ["ui.router"]);
+            app.config(function($stateProvider, $urlRouterProvider){
+           //     $stateProvider.state("home", {template: "<h1>Welcome</h1>"});
+               
+             $stateProvider.state("home", {abstract:true, template: "<a ui-sref='.main'>Main</a> <a ui-sref='.news'>News</a>"});   
+                
+                  $stateProvider.state("home.main", {url : "/main", template: "<h1>Main view content</h1>"});  
+                 $stateProvider.state("home.news", {url : "/news", template: "<h1>News channel view content</h1>"});  
+                
+                $stateProvider.state("page1", {
+                    url:"/mypage",
+                    views :{
+                         "pview1" : {template : "<h3>Partial View 1</h3>"},
+                         "pview2" : {template : "<h4>Partial View 2</h4>"},
+                         "pview3" : {template : "<h5>Partial View 3</h5>"}
+                    }
+                    
+                });
+            });
+            app.controller("MainCtrl", function($scope, $state){
+                           $scope.showHome = function(){
+                               $state.go("page1");
+                           }
+                           });
+            
+            
+        </script>
+        
+    </head>
+    <body ng-controller="MainCtrl">
+        {{"Ui Router Example"}}
+        <div>
+            <a ui-sref="home.main">Home</a>
+             
+        </div>
+        <button ng-click="showHome()">Show home</button>
+        <div ui-view></div>
+        <div ui-view="pview1"></div>
+        <div ui-view="pview2"></div>
+        <div ui-view="pview3"></div>
+    </body>
+    
+</html>

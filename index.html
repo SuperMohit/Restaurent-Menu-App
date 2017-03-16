@@ -12,7 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.2/angular-sanitize.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-route.min.js">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-resource.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-messages.min.js"></script>
+     <script src="js/mydirectives.js"></script>
     </head>
 
     
@@ -30,12 +33,14 @@
 
 <nav class="navbar navbar-inverse no-margin">
   <div class="container-fluid">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav" style="width: 100%;">
       <li><a  href = "/#!/">Home</a></li>
       <li> <a href = "/#!/menu"> Menu </a></li>
       <li><a href = "/#!/manage"> Manage </a> </li>
-      <li><a href = "/#!/cart"> Cart </a>    </li>
-      
+      <li><a href = "/#!/cart"> Cart </a></li>
+      <li style="float: right;" ng-hide="isLogin"><a href = "/#!/login" style="background-color: darkblue;"> Login </a></li>
+      <li style="float: right;" ng-show="isLogin"><a href = "/#!/logout" style="background-color: red;"> Logout </a></li>    
+       <li style="float: right;" ><a href = "/#!/signup" style="background-color: red;">  Signup</a></li>    
     </ul>
   </div>
 </nav>

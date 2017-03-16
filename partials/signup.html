@@ -1,0 +1,53 @@
+<h2 class="container">Enter Customer Details</h2>
+
+
+
+<form name="userform" class="container">
+    
+<div class="form-group">
+    <label for="uname">Name:</label>
+    <input class="form-control" name = "uname" id="uname" ng-model="user.name" placeholder="Enter Name" ng-required="true">
+    <span ng-messages="userform.uname.$error" ng-show="userform.uname.$dirty">
+     <b style="color:red" ng-message="required" >User Name is required</b>
+    </span>
+  </div>
+  
+    <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" placeholder="Email">
+  </div>
+ 
+    <div class="form-group">
+    <label for="contact">Contact Number:</label>
+    <input class="form-control" name= "contact" id="contact" placeholder="" ng-pattern="/^[789]\d{9}$/">
+   <span ng-messages="userform.contact.$error" ng-show="userform.contact.$dirty">
+     <b style="color:red" ng-message="required" >Contact is required</b>
+     <b style="color:red" ng-message="pattern" >Invalid contact</b>
+    </span>
+  </div>    
+  
+<div class="form-group">
+    <label for="state">State:</label>
+    <select  name="state" class="form-control" id="state" ng-model="user.state" ng-options="state.stateId as state.Name for state in stateList">
+        <option value="">Select</option>
+    </select>
+     <span ng-messages="userform.state.$error" ng-show="userform.state.$dirty">
+     <b style="color:red" ng-message="required" >State is required</b>
+    </span>
+  </div>
+  <div class="form-group" ng-show="userform.state.$dirty">
+    <label for="city">City:</label>
+    <select  name="city" class="form-control" id="city" ng-model="user.city" ng-options="city.stateId as city.Name for city in cityList" >
+        <option value="">Select</option>
+    </select>
+     <span ng-messages="userform.city.$error" ng-show="userform.city.$dirty">
+     <b style="color:red" ng-message="required" >State is required</b>
+    </span>
+  </div>    
+    
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" placeholder="******">
+  </div>
+  <button type="submit" class="btn btn-primary" ng-disabled="userform.$invalid">Submit</button>
+</form>

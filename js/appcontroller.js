@@ -1,8 +1,19 @@
-    var c = angular.module("CtrlModule", ["SvcModule"]);
+    var c = angular.module("CtrlModule", ["SvcModule","myDirectivesApp"]);
 
-        c.controller("MainController", function($scope){    
+        c.controller("MainController", function($scope, $location, $rootScope){    
             console.log("This is main controller function");    
             $scope.restaurantName = "<u>  Le Meridian  </u>";
+            $scope.$on("$routeChangeSuccess", function(){
+                console.log("Route Chnage Success" + $location.path());
+                if($location.path() == "/logout"){
+                    $scope.isLogin = false;
+                }
+            });
+            
+            $scope.$on("$routeChangeStart", function(){
+                if(!$rootScope.isLogin && $location.path() == "/manage")
+                    $location.path("/login");
+            });
         });
 
         c.config(function(){
@@ -13,6 +24,32 @@
             console.log("Ctrl App run");
         });
 
+      c.controller("SignupController", function($scope){  
+              $scope.stateList = [
+                  {"stateId":1, "Name":"Karnataka"},
+                  {"stateId":2, "Name":"Maharashtra"},
+                   {"stateId":3, "Name":"Tamil Nadu"}
+                ];
+              //watches model          
+              $scope.$watch("user.state", function(newval, oldval){
+                  console.log("Old: " + oldval + " New : " + newval);
+                  if(newval == 1){
+                      $scope.cityList = [
+                  {"cityId":101, "Name":"Bangalore"},
+                  {"stateId":201, "Name":"Mangalore"},
+                   {"stateId":301, "Name":"Mysore"}
+                ];
+                  } else if(newval == 2){
+                      $scope.cityList = [
+                   {"cityId":401, "Name":"Mumbai"},
+                   {"stateId":501, "Name":"Pune"},
+                   {"stateId":601, "Name":"Nagpur"}
+                ];
+                  }
+              });
+          
+        });
+                     
 
      c.controller("MenuController", function($scope, MenuServices, OrderServices){    
             $scope.itemsList = MenuServices.getAllMenuItems();    
@@ -49,3 +86,10 @@
             
           
         });
+
+       c.controller("LoginController", function($scope, $location, $rootScope){
+          $scope.doLogin =  function(){
+              
+          } 
+           
+       });
